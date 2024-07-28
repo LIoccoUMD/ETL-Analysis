@@ -11,4 +11,4 @@ df = df.describe()
 output_file = 'data/outputs/summary_statistics.csv'
 # df.to_csv(output_file)
 df.to_csv(output_file)
-print("Descriptive analysis completed and saved.")
+print("Descriptive analysis saved.")
