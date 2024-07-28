@@ -1,0 +1,43 @@
+{
+  "id": "niharika41298/gym-exercise-data",
+  "id_no": 2772354,
+  "datasetSlugNullable": "gym-exercise-data",
+  "ownerUserNullable": "niharika41298",
+  "usabilityRatingNullable": 0.9411764705882353,
+  "titleNullable": "Gym Exercise Dataset",
+  "subtitleNullable": "All exercise data for workouts done at the gym. Has more than 2500+ exercises.",
+  "descriptionNullable": "**Context**\nThis is a dataset created for analyzing and evaluating workouts that one can do at the gym(or at home) to stay healthy. Exercising and being fit is becoming very important and almost a daily routine for all individuals and what better than to take a data-driven route for success to meet one's fitness goals.\n\n**Inspiration**\nIf you go to a gym, the first thing you realize is the myriad of exercises available to do. The exercises range from bodyweight, machine-based or dumbbell/barbell based. With so many exercises to do, beginners or even professional can wonder which the exercise that will target a specific muscle the best and that is where this analysis can be useful. I also thought it would be fun to visualize the exercise details.\n\n**Content**\nThere is one file with 9 columns for each exercise. Columns may contain null values as the data is raw and scraped from various internet sources.",
+  "datasetId": 2772354,
+  "datasetSlug": "gym-exercise-data",
+  "hasDatasetSlug": true,
+  "ownerUser": "niharika41298",
+  "hasOwnerUser": true,
+  "usabilityRating": 0.9411764705882353,
+  "hasUsabilityRating": true,
+  "totalViews": 52896,
+  "totalVotes": 96,
+  "totalDownloads": 7368,
+  "title": "Gym Exercise Dataset",
+  "hasTitle": true,
+  "subtitle": "All exercise data for workouts done at the gym. Has more than 2500+ exercises.",
+  "hasSubtitle": true,
+  "description": "**Context**\nThis is a dataset created for analyzing and evaluating workouts that one can do at the gym(or at home) to stay healthy. Exercising and being fit is becoming very important and almost a daily routine for all individuals and what better than to take a data-driven route for success to meet one's fitness goals.\n\n**Inspiration**\nIf you go to a gym, the first thing you realize is the myriad of exercises available to do. The exercises range from bodyweight, machine-based or dumbbell/barbell based. With so many exercises to do, beginners or even professional can wonder which the exercise that will target a specific muscle the best and that is where this analysis can be useful. I also thought it would be fun to visualize the exercise details.\n\n**Content**\nThere is one file with 9 columns for each exercise. Columns may contain null values as the data is raw and scraped from various internet sources.",
+  "hasDescription": true,
+  "isPrivate": false,
+  "keywords": [
+    "global",
+    "exercise",
+    "data visualization",
+    "data analytics",
+    "text"
+  ],
+  "licenses": [
+    {
+      "nameNullable": "CC0-1.0",
+      "name": "CC0-1.0",
+      "hasName": true
+    }
+  ],
+  "collaborators": [],
+  "data": []
+}
