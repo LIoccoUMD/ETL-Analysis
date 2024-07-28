@@ -25,7 +25,7 @@ Unsafe lifting practices in gyms pose risks to member safety, which can be mitig
 
 ## Cloning the Repository
 Clone the repository to your local machine using the following command:  
-`git clone` https://github.com/username/inst414-final-project-luciano-iocco.git
+`git clone` https://github.com/username/inst414-final-project-luciano-iocco.git  
 Create a virtual environment and select the most recent version of Python. At this point in time the current version being worked with is 3.11.1. requirements.txt contains all of the dependencies needed to run this project.
 
 # Code Package Structure
