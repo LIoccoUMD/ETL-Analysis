@@ -31,6 +31,10 @@ df["cluster"] = kmeans.fit_predict(features)
 fig = px.scatter(df, x="Level", y="BodyPart", color="cluster", title="Exercise Clusters")
 fig.show()
 
+# Save figure as HTML
+fig.write_html(f'{"vis"}/exercise_clusters.html', auto_open=False)
+
+
 
 # Save the summary statistics
 output_file = "data/outputs/descriptive_analysis.csv"
