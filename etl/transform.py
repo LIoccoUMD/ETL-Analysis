@@ -2,24 +2,25 @@ import pandas as pd
 
 # Load dataset
 df = pd.read_csv("data\downloaded\megaGymDataset.csv", index_col=0)
+
 # Fix rename, this just drops column
-# df.rename(columns={"Unnamed: 0": 'ID'}, inplace=True)
+# df.rename(columns={"Unnamed: 0": "ID"}, inplace=True)
 
 # Calculate the mean rating for each level where rating is not NaN
-mean_ratings_by_level = df.groupby('Level')['Rating'].mean()
+mean_ratings_by_level = df.groupby("Level")["Rating"].mean()
 
 # Fills missing Rating values based on mean grouped by level (beginner, intermediate, advanced)
 def fill_missing_rating(row):
-    if pd.isna(row['Rating']):
-        return mean_ratings_by_level[row['Level']]
+    if pd.isna(row["Rating"]):
+        return mean_ratings_by_level[row["Level"]]
     else:
-        return row['Rating']
+        return row["Rating"]
 
 # Apply the function to fill missing values
-df['Rating'] = df.apply(fill_missing_rating, axis=1)
+df["Rating"] = df.apply(fill_missing_rating, axis=1)
 
 # View specific rows with NaN for equipment
-missing_equipment_rows = df[df['Equipment'].isna()]
+missing_equipment_rows = df[df["Equipment"].isna()]
 
 updates = {
     637: "Bench",
@@ -56,7 +57,7 @@ updates = {
 
 # Apply updates to df
 for index, equipment in updates.items():
-    df.loc[index, 'Equipment'] = equipment
+    df.loc[index, "Equipment"] = equipment
 
 # Store df as CSV
 df.to_csv("data\processed\processed_data")
