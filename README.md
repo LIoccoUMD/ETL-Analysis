@@ -30,7 +30,7 @@ Create a virtual environment and select the most recent version of Python. At th
 
 # Code Package Structure
 
-**data/**
+**data/**  
 *downloaded/* : Contains raw downloaded datasets.  
 *processed/* : Contains processed data files.  
 *outputs/* : Contains output files such as summary statistics and clustered data.  
