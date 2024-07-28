@@ -8,7 +8,7 @@ df = pd.read_csv(data_path)
 df = df.describe()
 
 # Save the summary statistics
-output_file = 'data/outputs/summary_statistics.csv'
+output_file = 'data/outputs/descriptive_analysis.csv'
 # df.to_csv(output_file)
 df.to_csv(output_file)
 print("Descriptive analysis saved.")
