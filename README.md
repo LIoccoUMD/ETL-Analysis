@@ -30,16 +30,15 @@ Create a virtual environment and select the most recent version of Python. At th
 
 # Code Package Structure
 
-# **data/**
+**data/**
 *downloaded/* : Contains raw downloaded datasets.  
 *processed/* : Contains processed data files.  
 *outputs/* : Contains output files such as summary statistics and clustered data.  
-## **analysis/**
-### descriptive_analysis.py: Script for performing descriptive analysis and clustering.
-### prescriptive_analysis.py: Script for performing prescriptive analysis
-## **etl/**
-### extract.py: Script for extracting data.
-### load.py: Script for loading data.
-### transform.py: Script for transforming data.
-## **vis/**
-### visualizations.py: Script for generating visualizations.
+**analysis/**  
+*descriptive_analysis.py*: Script for performing descriptive analysis and clustering.  
+*prescriptive_analysis.py*: Script for performing prescriptive analysis  
+**etl/**  
+*extract.py*: Script for extracting data.  
+*transform.py*: Script for transforming data.  
+**vis/**  
+*visualizations.py*: Script for generating visualizations.
