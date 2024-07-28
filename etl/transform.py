@@ -60,3 +60,6 @@ for index, equipment in updates.items():
 
 # Verify specific rows
 print(df.loc[list(updates.keys())])
+
+# Store df as CSV
+df.to_csv("data\processed\processed_data")
