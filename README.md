@@ -33,7 +33,10 @@ Create a virtual environment and select the most recent version of Python. At th
 **data/**  
     ∙ *downloaded/* : Contains raw downloaded datasets.  
     ∙ *processed/* : Contains processed data files.  
-    ∙ *outputs/* : Contains output files such as summary statistics and clustered data.  
+**outputs/** 
+    ∙ *descriptive_analysis.csv*: Output file for descriptive_analysis script.
+    ∙ *prescriptive_analysis.csv*: Output file for prescriptive_analysis script.
+    ∙ 
 **analysis/**  
     ∙ *descriptive_analysis.py*: Script for performing descriptive analysis and clustering.  
     ∙ *prescriptive_analysis.py*: Script for performing prescriptive analysis  
