@@ -58,14 +58,6 @@ for index, equipment in updates.items():
     df.loc[index, "Equipment"] = equipment
 
 # Temporary while encoding level column
-print("Min:\n\n")
-print(df["Rating"].min())
-print("\n\nMax:\n\n")
-print(df["Rating"].max())
-print("\n\nLevel Min:\n\n")
-print(df["Level"].min())
-print("\n\nMax:\n\n")
-print(df["Level"].max())
 
 # Store df as CSV
 df.to_csv("data\processed\processed_data")
