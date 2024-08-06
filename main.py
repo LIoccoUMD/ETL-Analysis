@@ -17,7 +17,8 @@ os.system("python etl/transform.py")
 
 # Step 3: Evaluate Model
 print("Running Evaluation")
-os.system("python analysis/evaluate.py")
+os.system("python analysis/descriptive_analysis.py")
+os.system("python analysis/prescriptive_analysis.py")
 
 # Step 4: Generate Visualizations
 print("Running Visualization")

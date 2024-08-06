@@ -35,7 +35,6 @@ fig.show()
 fig.write_html(f'{"vis"}/exercise_clusters.html', auto_open=False)
 
 
-
 # Save the summary statistics
 output_file = "data/outputs/descriptive_analysis.csv"
 # df.to_csv(output_file)
