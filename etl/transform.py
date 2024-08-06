@@ -1,7 +1,7 @@
 import pandas as pd
 
 # Load dataset
-df = pd.read_csv("data\extracted\megaGymDataset.csv", index_col=0)
+df = pd.read_csv("data\downloaded\megaGymDataset.csv", index_col=0)
 
 # Fix rename, this just drops column
 # df.rename(columns={"Unnamed: 0": "ID"}, inplace=True)
