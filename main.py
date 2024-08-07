@@ -1,27 +1,47 @@
 import os
-# placeholder main function
-def main():
-    return 1
+import logging
 
-# only execute when the script is run directly
+# Set up logging
+logging.basicConfig(
+    filename='gym_project.log',
+    level=logging.DEBUG,
+    format='%(asctime)s - %(levelname)s - %(message)s',
+    filemode='w'
+)
+
+def run_step(step_name, script_path):
+    """
+    Runs a step in the ETL process and logs the outcome.
+
+    Parameters:
+        step_name (str): The name of the step being run.
+        script_path (str): The path to the script to execute for this step.
+
+    Returns:
+        None
+    """
+    try:
+        logging.info(f"Running {step_name} step")
+        print(f"Running {step_name} step")
+        os.system(f"python {script_path}")
+        logging.info(f"{step_name} step completed successfully")
+    except Exception as e:
+        logging.error(f"Error during {step_name} step: {e}", exc_info=True)
+        print(f"Error during {step_name} step: {e}")
+
 if __name__ == "__main__":
-    main()
+    # Step 1: Extract Data
+    run_step("Extract", "etl/extract.py")
 
-# Step 1: Extract Data
-print("Running Extract Step")
-os.system("python etl/extract.py")
+    # Step 2: Transform Data
+    run_step("Transform", "etl/transform.py")
 
-# Step 2: Transform Data
-print("Running Transform Step")
-os.system("python etl/transform.py")
+    # Step 3: Evaluate Model
+    run_step("Descriptive Analysis", "analysis/descriptive_analysis.py")
+    run_step("Prescriptive Analysis", "analysis/prescriptive_analysis.py")
 
-# Step 3: Evaluate Model
-print("Running Evaluation")
-os.system("python analysis/descriptive_analysis.py")
-os.system("python analysis/prescriptive_analysis.py")
+    # Step 4: Generate Visualizations
+    run_step("Visualization", "vis/visualizations.py")
 
-# Step 4: Generate Visualizations
-print("Running Visualization")
-os.system("python vis/visualizations.py")
-
-print("Finished running.")
+    logging.info("Finished running all steps.")
+    print("Finished running.")
