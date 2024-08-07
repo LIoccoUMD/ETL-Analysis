@@ -17,9 +17,6 @@ Unsafe lifting practices in gyms pose risks to member safety, which can be mitig
 - **Encoding Categorical Variables**  
 - **K-Nearest Neighbor to predict safety scores**  
     - GridSearchCV to find the optimal number of neighbors
-- **Descriptive Analysis**: Summary statistics and visualizations to understand the distribution of exercise data.  
-- **Clustering Analysis**: K-Means clustering to group exercises based on type, body part, difficulty level, and rating.  
-- **Prescriptive analysis**: *WIP*  
 
 ### Expected Outputs
 - Descriptive and prescriptive analysis/visualizations in clear, readable files
@@ -42,6 +39,7 @@ their time, level, and a message.
 
 # Code Package Structure
 
+∙ gym_project.log: Contains logging information recorded during runtime.
 **data/**  
     ∙ *downloaded/* : Contains raw downloaded datasets.  
     ∙ *processed/* : Contains processed data files.  
@@ -56,3 +54,4 @@ their time, level, and a message.
     ∙ *transform.py*: Processes the raw data, handles missing values and calculates safety scores for exercises.  
 **vis/**  
     ∙ *visualizations.py*: Generates visualizations to help understand the data and results.  
+
