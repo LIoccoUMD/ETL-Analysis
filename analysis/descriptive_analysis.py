@@ -13,14 +13,14 @@ import matplotlib.pyplot as plt
 # Load the processed data
 df = pd.read_csv("data/processed/processed_data.csv")
 
-# Display descriptive statistics
-def summary_statistics(df):
-    df.info()  
-    df = df.describe()
-    return df
-
-# K-means - to be put inside of a function later
 def knearest(df):
+    """ Performs K-Nearest Neighbors with the optimal number of neighbors calculated by a GridSearch and evaluated with negative mean squared error.
+    Plots the actual vs. predicted safety values.
+    
+    Parameters: df: The DataFrame containing the data.
+    
+    Returns: None
+    """
     x = df.drop(columns=["Desc", "RatingDesc", "Title", "Type", "Equipment", "BodyPart", "Safety"])
     y = df["Safety"]
     df = df.dropna()
@@ -31,13 +31,13 @@ def knearest(df):
     x = imputer.fit_transform(x)
     y = imputer_y.fit_transform(y.values.reshape(-1, 1)).ravel()
     
+    # Calculate optimal k_value
     param_grid = {"n_neighbors": range(1,15)}
     knn = KNeighborsRegressor()
     grid_search = GridSearchCV(knn, param_grid, cv=5, scoring="neg_mean_squared_error")
     grid_search.fit(x,y)
     optimal_k = grid_search.best_params_["n_neighbors"]
     print("Best parameters found: ", grid_search.best_params_)
-    
     
     X_train, X_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_state=10)
     knn_regressor = KNeighborsRegressor(optimal_k)
@@ -47,21 +47,26 @@ def knearest(df):
     print("K-Nearest Neighbor")
     print("MeanSquaredError [MSE]:", knn_mse)
     
+    y_min = min(y_test.min(), y_pred.min())
+    y_max = max(y_test.max(), y_pred.max())
+    
+    
     # Graph using plotly
     fig = px.scatter(x=y_test, y=y_pred, labels={'x': 'Actual Safety', 'y': 'Predicted Safety'}, title="Actual vs Predicted Safety", 
                      color=y_test,
                      color_continuous_scale=px.colors.sequential.algae)
     fig.update_traces(marker=dict(size=10, line=dict(width=0.5, color='darkviolet')), selector=dict(mode='markers'))
     fig.update_layout(template="presentation", plot_bgcolor="white", paper_bgcolor="white",
-                      xaxis=dict(range=[min(y_test.min(), y_pred.min()), max(y_test.max(), y_pred.max())]),
-                      yaxis=dict(range=[min(y_test.min(), y_pred.min()), max(y_test.max(), y_pred.max())]))  # Change theme
+                      xaxis=dict(range=[y_min,y_max]),
+                      yaxis=dict(range=[y_min,y_max]))
     fig.show()   
 
-# knearest(df)
-
-
-# Save the summary statistics
 def save_summary_statistics(df):
+    """Save the summary statistics of the parameter df to a CSV file.
+    Parameters: df: The DataFrame for which to save summary statistics.
+    
+    Returns: None
+    """
     output_file = "data/outputs/descriptive_analysis.csv"
     df.to_csv(output_file)
     print("Descriptive analysis saved.")

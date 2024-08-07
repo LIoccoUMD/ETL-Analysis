@@ -1,24 +1,51 @@
 import pandas as pd
 import numpy as np
-from sklearn.preprocessing import LabelEncoder
 
 # Load dataset
 def load_data(file_path):
+    """Loads the data from a CSV file with path file_path.
+    
+    Parameters:
+        file_path (str): The path of the file containing the data to be read.
+        
+    Returns:
+        pd.Dataframe: The data in the file as a dataframe.
+    """
     return pd.read_csv(file_path, index_col=0)
 
-# Encode level function
 def encode_level(df):
+    """
+    Encode the "Level" column with numerical values.
+    
+    Parameters: df (pd.DataFrame): The DataFrame containing the data.
+    
+    Returns: pd.DataFrame: The DataFrame with the "Level" column encoded.
+    """
     df["Level"] = df["Level"].map({"Beginner": 1.0, "Intermediate": 2.0, "Advanced": 3.0})
     return df
 
-# Fills missing Rating values based on mean grouped by level (beginner, intermediate, advanced)
 def fill_missing_rating(row, mean_ratings_by_level):
+    """Fill missing "Rating" values based on the mean rating for each Level.
+
+    Parameters:
+        row (pd.Series): A row of the DataFrame
+        mean_ratings_by_level (pd.Series): The mean rating for each level.
+
+    Returns:
+        float: The filled Rating value.
+    """
     if pd.isna(row["Rating"]):
         return mean_ratings_by_level[row["Level"]]
     else:
         return row["Rating"]
 
 def handle_missing_values(df):
+    """ Fill missing values in the DataFrame. [WIP: Updates to be moved to reference_table]
+    
+    Parameters: df (pd.DataFrame): The DataFrame containing the data.
+    
+    Returns: pd.DataFrame: The DataFrame with missing values filled in.
+    """
     # Calculate the mean rating for each level where rating is not NaN
     mean_ratings_by_level = df.groupby("Level")["Rating"].mean()
     df["Rating"] = df.apply(fill_missing_rating, axis=1, args=(mean_ratings_by_level,))
@@ -36,20 +63,16 @@ def handle_missing_values(df):
     for index, equipment in updates.items():
         df.loc[index, "Equipment"] = equipment
 
-    # Handling remaining missing values
+    
     df.loc[(df['Level'].isna()) & (df['Rating'] >= 0) & (df['Rating'] <= 4.9), 'Level'] = 'Beginner'
     df.loc[(df['Level'].isna()) & (df['Rating'] >= 5.0) & (df['Rating'] <= 7.4), 'Level'] = 'Intermediate'
     df.loc[(df['Level'].isna()) & (df['Rating'] > 7.4), 'Level'] = 'Advanced'
     df = encode_level(df)
     
-    # Calculate min and max rating for each level
     min_max_by_level = df.groupby('Level')['Rating'].agg(["min", "max"]).reset_index()
     min_max_by_level.columns = ['Level', 'MinRating', 'MaxRating']
-
-    # Merge the min and max values back to the original dataframe
     df = df.merge(min_max_by_level, on='Level', how='left')
 
-    # Fill missing values with random values within the min-max range
     df["Rating"] = df.apply(
         lambda row: np.random.uniform(row['MinRating'], row['MaxRating']) if pd.isna(row['Rating']) else row['Rating'],
         axis=1
@@ -59,7 +82,6 @@ def handle_missing_values(df):
     df.drop(columns=['MinRating', 'MaxRating'], inplace=True)
     return df
 
-# Define body part and equipment factors
 body_part_factors = {
     "Abdominals": 1.0, "Adductors": 1.1, "Abductors": 1.1, "Biceps": 1.1,
     "Calves": 1.2, "Chest": 1.3, "Forearms": 1.0, "Glutes": 1.0, "Hamstrings": 1.1,
@@ -74,6 +96,13 @@ equipment_factors = {
 }
 
 def calculate_safety(df):
+    """
+    Calculate the safety score for each exercise in the DataFrame.
+    
+    Parameters: df (pd.DataFrame): The DataFrame containing the data.
+    
+    Returns: pd.DataFrame: The DataFrame with the calculate Safety scores in a new column.
+    """
     df = handle_missing_values(df)
     df["BodyPart_Factor"] = df["BodyPart"].map(body_part_factors)
     df["Equipment_Factor"] = df["Equipment"].map(equipment_factors)
@@ -81,10 +110,18 @@ def calculate_safety(df):
     return df
 
 def transform_data(input_file, output_file):
+    """
+    Transform the data by loading, processing, and calculating safety scores. This data is then saved to a CSV file.
+    
+    Parameters: input_file (str): The path to the input CSV file.
+    output_file: (str) The path to the output CSV file.
+    
+    Returns: None
+    """
     df = load_data(input_file)
     df = calculate_safety(df)
     df.to_csv(output_file, index=False)
     print(f"Transformed data saved to {output_file}")
 
-
-transform_data("data/extracted/megaGymDataset.csv", "data/processed/processed_data.csv")
+if __name__ == "__main__":
+    transform_data("data/extracted/megaGymDataset.csv", "data/processed/processed_data.csv")
