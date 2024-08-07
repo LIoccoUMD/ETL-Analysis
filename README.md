@@ -13,15 +13,19 @@ Unsafe lifting practices in gyms pose risks to member safety, which can be mitig
 - `dataset-metadata.json`: Metadata for the datasets.
 
 ### Techniques Employed
-- **Mean Imputation**
-- **Descriptive Analysis**: Summary statistics and visualizations to understand the distribution of exercise data.
-- **Clustering Analysis**: K-Means clustering to group exercises based on type, body part, difficulty level, and rating.
-- **Prescriptive analysis**: *WIP*
+- **Mean Imputation**: Handling missing values by imputing the mean rating for each exercise level.  
+- **Encoding Categorical Variables**  
+- **K-Nearest Neighbor to predict safety scores**  
+    - GridSearchCV to find the optimal number of neighbors
+- **Descriptive Analysis**: Summary statistics and visualizations to understand the distribution of exercise data.  
+- **Clustering Analysis**: K-Means clustering to group exercises based on type, body part, difficulty level, and rating.  
+- **Prescriptive analysis**: *WIP*  
 
 ### Expected Outputs
 - Descriptive and prescriptive analysis/visualizations in clear, readable files
 - Summary statistics of the exercise dataset.
-- Visualization of exercises grouped into clusters according to difficulty and rating
+- Visualization of exercises grouped into clusters
+- Recommendations of exercises based on their difficulty.
 
 # Setup Instructions
 
