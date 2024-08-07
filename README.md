@@ -39,7 +39,7 @@ their time, level, and a message.
 
 # Code Package Structure
 
-∙ gym_project.log: Contains logging information recorded during runtime.
+∙ gym_project.log: Contains logging information recorded during runtime.  
 **data/**  
     ∙ *downloaded/* : Contains raw downloaded datasets.  
     ∙ *processed/* : Contains processed data files.  
