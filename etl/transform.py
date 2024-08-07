@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+import logging
 
 # Load dataset
 def load_data(file_path):
@@ -34,10 +35,14 @@ def fill_missing_rating(row, mean_ratings_by_level):
     Returns:
         float: The filled Rating value.
     """
-    if pd.isna(row["Rating"]):
-        return mean_ratings_by_level[row["Level"]]
-    else:
-        return row["Rating"]
+    try:
+        if pd.isna(row["Rating"]):
+            return mean_ratings_by_level[row["Level"]]
+        else:
+            return row["Rating"]
+    except Exception as e:
+        logging.error(f"Error filling missing rating for {row.name}: {e}", exc_info=True)
+        raise
 
 def handle_missing_values(df):
     """ Fill missing values in the DataFrame. [WIP: Updates to be moved to reference_table]
