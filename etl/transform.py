@@ -1,63 +1,91 @@
 import pandas as pd
+import numpy as np
 from sklearn.preprocessing import LabelEncoder
 
 # Load dataset
-df = pd.read_csv("data\extracted\megaGymDataset.csv", index_col=0)
+def load_data(file_path):
+    return pd.read_csv(file_path, index_col=0)
 
-# Calculate the mean rating for each level where rating is not NaN
-mean_ratings_by_level = df.groupby("Level")["Rating"].mean()
+# Encode level function
+def encode_level(df):
+    df["Level"] = df["Level"].map({"Beginner": 1.0, "Intermediate": 2.0, "Advanced": 3.0})
+    return df
 
 # Fills missing Rating values based on mean grouped by level (beginner, intermediate, advanced)
-def fill_missing_rating(row):
+def fill_missing_rating(row, mean_ratings_by_level):
     if pd.isna(row["Rating"]):
         return mean_ratings_by_level[row["Level"]]
     else:
         return row["Rating"]
 
-# Apply the function to fill missing values
-df["Rating"] = df.apply(fill_missing_rating, axis=1)
+def handle_missing_values(df):
+    # Calculate the mean rating for each level where rating is not NaN
+    mean_ratings_by_level = df.groupby("Level")["Rating"].mean()
+    df["Rating"] = df.apply(fill_missing_rating, axis=1, args=(mean_ratings_by_level,))
 
-# View specific rows with NaN for equipment
-missing_equipment_rows = df[df["Equipment"].isna()]
+    updates = {
+        637: "Bench", 638: "Bench", 639: "Rod", 699: "None", 912: "Roller", 914: "Wall",
+        1207: "None", 1402: "None", 1403: "Band", 1404: "None", 1405: "Seat", 1406: "None",
+        1407: "None", 1531: "None", 1532: "Seat", 1533: "None", 1624: "None", 1625: "None",
+        1626: "None", 1627: "None", 1780: "Rod", 2418: "None", 2419: "Seat", 2420: "None",
+        2421: "Dumbbell", 2422: "Smith machine", 2423: "None", 2763: "None", 2764: "None",
+        2765: "None"
+    }
 
-updates = {
-    637: "Bench",
-    638: "Bench",
-    639: "Rod",
-    699: "None",
-    912: "Roller",
-    914: "Wall",
-    1207: "None",
-    1402: "None",
-    1403: "Band",
-    1404: "None",
-    1405: "Seat",
-    1406: "None",
-    1407: "None",
-    1531: "None",
-    1532: "Seat",
-    1533: "None",
-    1624: "None",
-    1625: "None",
-    1626: "None",
-    1627: "None",
-    1780: "Rod",
-    2418: "None",
-    2419: "Seat",
-    2420: "None",
-    2421: "Dumbbell",
-    2422: "Smith machine",
-    2423: "None",
-    2763: "None",
-    2764: "None",
-    2765: "None"
+    # Apply updates to df
+    for index, equipment in updates.items():
+        df.loc[index, "Equipment"] = equipment
+
+    # Handling remaining missing values
+    df.loc[(df['Level'].isna()) & (df['Rating'] >= 0) & (df['Rating'] <= 4.9), 'Level'] = 'Beginner'
+    df.loc[(df['Level'].isna()) & (df['Rating'] >= 5.0) & (df['Rating'] <= 7.4), 'Level'] = 'Intermediate'
+    df.loc[(df['Level'].isna()) & (df['Rating'] > 7.4), 'Level'] = 'Advanced'
+    df = encode_level(df)
+    
+    # Calculate min and max rating for each level
+    min_max_by_level = df.groupby('Level')['Rating'].agg(["min", "max"]).reset_index()
+    min_max_by_level.columns = ['Level', 'MinRating', 'MaxRating']
+
+    # Merge the min and max values back to the original dataframe
+    df = df.merge(min_max_by_level, on='Level', how='left')
+
+    # Fill missing values with random values within the min-max range
+    df["Rating"] = df.apply(
+        lambda row: np.random.uniform(row['MinRating'], row['MaxRating']) if pd.isna(row['Rating']) else row['Rating'],
+        axis=1
+    )
+
+    # Drop the temporary min and max columns
+    df.drop(columns=['MinRating', 'MaxRating'], inplace=True)
+    return df
+
+# Define body part and equipment factors
+body_part_factors = {
+    "Abdominals": 1.0, "Adductors": 1.1, "Abductors": 1.1, "Biceps": 1.1,
+    "Calves": 1.2, "Chest": 1.3, "Forearms": 1.0, "Glutes": 1.0, "Hamstrings": 1.1,
+    "Lats": 1.3, "Lower Back": 1.4, "Middle Back": 1.3, "Traps": 1.1, "Neck": 1.5,
+    "Quadriceps": 1.1, "Shoulders": 1.3, "Triceps": 1.2
 }
 
-# Apply updates to df
-for index, equipment in updates.items():
-    df.loc[index, "Equipment"] = equipment
+equipment_factors = {
+    "Bands": 1.0, "Barbell": 1.2, "Kettlebells": 1.1, "Dumbbell": 1.0, "Other": 1.0,
+    "Cable": 1.1, "Machine": 1.0, "Body Only": 1.0, "Medicine Ball": 1.1, "Bench": 1.2,
+    "Rod": 1.1, "E-Z Curl Bar": 1.0, "Roller": 1.0, "Wall": 1.0 
+}
 
-# Temporary while encoding level column
+def calculate_safety(df):
+    df = handle_missing_values(df)
+    df["BodyPart_Factor"] = df["BodyPart"].map(body_part_factors)
+    df["Equipment_Factor"] = df["Equipment"].map(equipment_factors)
+    df["Safety"] = ((10 - df["Level"]) / 10) * df["Rating"] * df["BodyPart_Factor"] * df["Equipment_Factor"]
+    print(df.head())
+    return df
 
-# Store df as CSV
-df.to_csv("data\processed\processed_data")
+def transform_data(input_file, output_file):
+    df = load_data(input_file)
+    df = calculate_safety(df)
+    df.to_csv(output_file, index=False)
+    print(f"Transformed data saved to {output_file}")
+
+
+transform_data("data/extracted/megaGymDataset.csv", "data/processed/processed_data.csv")
