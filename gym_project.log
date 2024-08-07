@@ -1,11 +1,11 @@
-2024-08-06 22:29:46,846 - INFO - Running Extract step
-2024-08-06 22:29:48,183 - INFO - Extract step completed successfully
-2024-08-06 22:29:48,184 - INFO - Running Transform step
-2024-08-06 22:29:49,117 - INFO - Transform step completed successfully
-2024-08-06 22:29:49,118 - INFO - Running Descriptive Analysis step
-2024-08-06 22:29:53,919 - INFO - Descriptive Analysis step completed successfully
-2024-08-06 22:29:53,919 - INFO - Running Prescriptive Analysis step
-2024-08-06 22:29:54,954 - INFO - Prescriptive Analysis step completed successfully
-2024-08-06 22:29:54,954 - INFO - Running Visualization step
-2024-08-06 22:29:55,054 - INFO - Visualization step completed successfully
-2024-08-06 22:29:55,054 - INFO - Finished running all steps.
+2024-08-06 23:01:00,126 - INFO - Running Extract step
+2024-08-06 23:01:01,401 - INFO - Extract step completed successfully
+2024-08-06 23:01:01,401 - INFO - Running Transform step
+2024-08-06 23:01:02,387 - INFO - Transform step completed successfully
+2024-08-06 23:01:02,387 - INFO - Running Descriptive Analysis step
+2024-08-06 23:01:07,235 - INFO - Descriptive Analysis step completed successfully
+2024-08-06 23:01:07,235 - INFO - Running Prescriptive Analysis step
+2024-08-06 23:01:08,367 - INFO - Prescriptive Analysis step completed successfully
+2024-08-06 23:01:08,367 - INFO - Running Visualization step
+2024-08-06 23:01:08,466 - INFO - Visualization step completed successfully
+2024-08-06 23:01:08,466 - INFO - Finished running all steps.

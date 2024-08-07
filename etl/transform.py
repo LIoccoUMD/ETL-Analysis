@@ -44,10 +44,11 @@ def fill_missing_rating(row, mean_ratings_by_level):
         logging.error(f"Error filling missing rating for {row.name}: {e}", exc_info=True)
         raise
 
-def handle_missing_values(df):
+def handle_missing_values(df, equipment_updates):
     """ Fill missing values in the DataFrame. [WIP: Updates to be moved to reference_table]
     
     Parameters: df (pd.DataFrame): The DataFrame containing the data.
+    equipment_updates (pd.DataFrame): DataFrame containing the equipment updates.
     
     Returns: pd.DataFrame: The DataFrame with missing values filled in.
     """
@@ -65,7 +66,7 @@ def handle_missing_values(df):
     }
 
     # Apply updates to df
-    for index, equipment in updates.items():
+    for index, equipment in equipment_updates.itertuples(index=False):
         df.loc[index, "Equipment"] = equipment
 
     
@@ -100,33 +101,36 @@ equipment_factors = {
     "Rod": 1.1, "E-Z Curl Bar": 1.0, "Roller": 1.0, "Wall": 1.0 
 }
 
-def calculate_safety(df):
+def calculate_safety(df, equipment_updates):
     """
     Calculate the safety score for each exercise in the DataFrame.
     
     Parameters: df (pd.DataFrame): The DataFrame containing the data.
+    equipment_updates (pd.DataFrame): DataFrame containing the equipment updates.
     
     Returns: pd.DataFrame: The DataFrame with the calculate Safety scores in a new column.
     """
-    df = handle_missing_values(df)
+    df = handle_missing_values(df, equipment_updates)
     df["BodyPart_Factor"] = df["BodyPart"].map(body_part_factors)
     df["Equipment_Factor"] = df["Equipment"].map(equipment_factors)
     df["Safety"] = ((10 - df["Level"]) / 10) * df["Rating"] * df["BodyPart_Factor"] * df["Equipment_Factor"]
     return df
 
-def transform_data(input_file, output_file):
+def transform_data(input_file, output_file, equipment_updates_file):
     """
     Transform the data by loading, processing, and calculating safety scores. This data is then saved to a CSV file.
     
     Parameters: input_file (str): The path to the input CSV file.
     output_file: (str) The path to the output CSV file.
+    equipment_updates_file (str): The path to the equipment updates CSV file.
     
     Returns: None
     """
     df = load_data(input_file)
-    df = calculate_safety(df)
+    equipment_updates = pd.read_csv(equipment_updates_file)
+    df = calculate_safety(df, equipment_updates)
     df.to_csv(output_file, index=False)
     print(f"Transformed data saved to {output_file}")
 
 if __name__ == "__main__":
-    transform_data("data/extracted/megaGymDataset.csv", "data/processed/processed_data.csv")
+    transform_data("data/extracted/megaGymDataset.csv", "data/processed/processed_data.csv", "data/reference-tables/equipment_updates.csv")
