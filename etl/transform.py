@@ -78,7 +78,6 @@ def calculate_safety(df):
     df["BodyPart_Factor"] = df["BodyPart"].map(body_part_factors)
     df["Equipment_Factor"] = df["Equipment"].map(equipment_factors)
     df["Safety"] = ((10 - df["Level"]) / 10) * df["Rating"] * df["BodyPart_Factor"] * df["Equipment_Factor"]
-    print(df.head())
     return df
 
 def transform_data(input_file, output_file):
