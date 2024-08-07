@@ -46,7 +46,7 @@ their time, level, and a message.
     ∙ *prescriptive_analysis.csv*: Output file for prescriptive_analysis script.  
 **analysis/**  
     ∙ *descriptive_analysis.py*: Performs descriptive statistical analysis.  
-    ∙ *prescriptive_analysis.py*: Evaluates models and provides recommendations. (WIP -- currently all done in descriptive_analysis.py)
+    ∙ *prescriptive_analysis.py*: Evaluates models and provides recommendations. (WIP -- currently all done in descriptive_analysis.py)  
 **etl/**  
     ∙ *extract.py*: Loads the raw dataset in a DataFrame
     ∙ *transform.py*: Processes the raw data, handles missing values and calculates safety scores for exercises.
