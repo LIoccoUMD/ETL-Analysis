@@ -26,7 +26,7 @@ def knearest(df):
     df = df.dropna()
     
     imputer = SimpleImputer(strategy="mean")
-    imputer_y = SimpleImputer(strategy='mean')
+    imputer_y = SimpleImputer(strategy="mean")
     
     x = imputer.fit_transform(x)
     y = imputer_y.fit_transform(y.values.reshape(-1, 1)).ravel()
@@ -52,10 +52,10 @@ def knearest(df):
     
     
     # Graph using plotly
-    fig = px.scatter(x=y_test, y=y_pred, labels={'x': 'Actual Safety', 'y': 'Predicted Safety'}, title="Actual vs Predicted Safety", 
-                     color=y_test,
+    fig = px.scatter(x=y_test, y=y_pred, labels={"x": "Actual Safety", "y": "Predicted Safety"}, title="Actual vs Predicted Safety", 
+                     color=y_test, trendline="ols", trendline_color_override="darkviolet",
                      color_continuous_scale=px.colors.sequential.algae)
-    fig.update_traces(marker=dict(size=10, line=dict(width=0.5, color='darkviolet')), selector=dict(mode='markers'))
+    fig.update_traces(marker=dict(size=10, line=dict(width=0.5, color="black")), selector=dict(mode="markers"))
     fig.update_layout(template="presentation", plot_bgcolor="white", paper_bgcolor="white",
                       xaxis=dict(range=[y_min,y_max]),
                       yaxis=dict(range=[y_min,y_max]))
