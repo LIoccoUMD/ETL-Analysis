@@ -3,7 +3,7 @@ import logging
 
 # Set up logging
 logging.basicConfig(
-    filename='gym_project.log',
+    filename='log/gym_project.log',
     level=logging.DEBUG,
     format='%(asctime)s - %(levelname)s - %(message)s',
     filemode='w'

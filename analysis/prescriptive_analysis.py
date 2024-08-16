@@ -1,7 +1,7 @@
 import pandas as pd
 import logging
 
-logging.basicConfig(filename="analysis/prescriptive_analysis.log", level=logging.INFO, 
+logging.basicConfig(filename="log/prescriptive_analysis.log", level=logging.INFO, 
                     format='%(asctime)s - %(levelname)s - %(message)s')
 logging.info("Starting prescriptive analysis.")
 

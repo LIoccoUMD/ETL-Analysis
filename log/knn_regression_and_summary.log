@@ -1,0 +1,9 @@
+2024-08-16 18:41:59,153 - INFO - Loading processed data for KNN regression.
+2024-08-16 18:41:59,168 - INFO - Running KNN regression and visualization script.
+2024-08-16 18:41:59,169 - INFO - Starting KNN regression.
+2024-08-16 18:41:59,697 - INFO - Optimal k found: 4
+2024-08-16 18:41:59,705 - INFO - KNN regression completed. MSE: 0.16294470736728922
+2024-08-16 18:41:59,706 - INFO - KNN Mean Absolute Error [MAE]: 0.1075877918135893
+2024-08-16 18:41:59,706 - INFO - KNN R^2 Score: 0.9718025716132295
+2024-08-16 18:42:01,659 - INFO - Visualization generated successfully.
+2024-08-16 18:42:01,694 - INFO - Script completed.

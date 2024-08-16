@@ -3,7 +3,7 @@ import numpy as np
 import logging
 
 
-logging.basicConfig(filename='etl/transform.log', level=logging.INFO, 
+logging.basicConfig(filename='log/transform.log', level=logging.INFO, 
                     format='%(asctime)s - %(levelname)s - %(message)s')
 
 # Load dataset

@@ -6,7 +6,7 @@ from sklearn.impute import SimpleImputer
 import plotly.express as px
 import logging
 
-logging.basicConfig(filename='analysis/knn_regression_and_summary.log', level=logging.INFO, 
+logging.basicConfig(filename='log/knn_regression_and_summary.log', level=logging.INFO, 
                     format='%(asctime)s - %(levelname)s - %(message)s')
 
 # Load the processed data

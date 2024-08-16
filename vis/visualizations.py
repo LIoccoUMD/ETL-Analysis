@@ -2,7 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import logging
 
-logging.basicConfig(filename='vis/visualizations.log', level=logging.INFO, 
+logging.basicConfig(filename='log/visualizations.log', level=logging.INFO, 
                     format='%(asctime)s - %(levelname)s - %(message)s')
 
 """

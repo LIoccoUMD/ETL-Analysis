@@ -1,7 +1,7 @@
 import kaggle
 import logging
 
-logging.basicConfig(filename='etl/extract.log', level=logging.INFO, 
+logging.basicConfig(filename='log/extract.log', level=logging.INFO, 
                     format='%(asctime)s - %(levelname)s - %(message)s')
 logging.info("Starting Kaggle dataset extraction.")
 
