@@ -2,6 +2,10 @@ import pandas as pd
 import numpy as np
 import logging
 
+
+logging.basicConfig(filename='etl/transform.log', level=logging.INFO, 
+                    format='%(asctime)s - %(levelname)s - %(message)s')
+
 # Load dataset
 def load_data(file_path):
     """Loads the data from a CSV file with path file_path.
@@ -12,6 +16,7 @@ def load_data(file_path):
     Returns:
         pd.Dataframe: The data in the file as a dataframe.
     """
+    logging.info(f"Loading data from {file_path}.")
     return pd.read_csv(file_path, index_col=0)
 
 def encode_level(df):
@@ -23,6 +28,7 @@ def encode_level(df):
     Returns: pd.DataFrame: The DataFrame with the "Level" column encoded.
     """
     df["Level"] = df["Level"].map({"Beginner": 1.0, "Intermediate": 2.0, "Advanced": 3.0})
+    logging.info("Encoding 'Level' column with numerical values.")
     return df
 
 def fill_missing_rating(row, mean_ratings_by_level):
@@ -37,6 +43,7 @@ def fill_missing_rating(row, mean_ratings_by_level):
     """
     try:
         if pd.isna(row["Rating"]):
+            logging.info("Missing 'rating' values filled.")
             return mean_ratings_by_level[row["Level"]]
         else:
             return row["Rating"]
@@ -52,6 +59,8 @@ def handle_missing_values(df, equipment_updates):
     
     Returns: pd.DataFrame: The DataFrame with missing values filled in.
     """
+    logging.info("Handling missing values in the DataFrame.")
+    
     # Calculate the mean rating for each level where rating is not NaN
     mean_ratings_by_level = df.groupby("Level")["Rating"].mean()
     df["Rating"] = df.apply(fill_missing_rating, axis=1, args=(mean_ratings_by_level,))
@@ -86,6 +95,8 @@ def handle_missing_values(df, equipment_updates):
 
     # Drop the temporary min and max columns
     df.drop(columns=['MinRating', 'MaxRating'], inplace=True)
+    logging.info("Temporary columns dropped.")
+    logging.info("Missing values handled successfully.")
     return df
 
 body_part_factors = {
