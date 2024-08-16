@@ -37,8 +37,8 @@ if __name__ == "__main__":
     run_step("Transform", "etl/transform.py")
 
     # Step 3: Evaluate Model
-    run_step("Descriptive Analysis", "analysis/descriptive_analysis.py")
     run_step("Prescriptive Analysis", "analysis/prescriptive_analysis.py")
+    run_step("KNN Model", "analysis/knn_regression_and_summary.py")
 
     # Step 4: Generate Visualizations
     run_step("Visualization", "vis/visualizations.py")
