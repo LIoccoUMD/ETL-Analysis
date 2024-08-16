@@ -1,7 +1,7 @@
 import pandas as pd
 from sklearn.model_selection import train_test_split, GridSearchCV
 from sklearn.neighbors import KNeighborsRegressor
-from sklearn.metrics import mean_squared_error
+from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
 from sklearn.impute import SimpleImputer
 import plotly.express as px
 import logging
@@ -49,6 +49,10 @@ def knearest(df):
         y_pred = knn_regressor.predict(X_test)
         knn_mse = mean_squared_error(y_test, y_pred)
         logging.info(f"KNN regression completed. MSE: {knn_mse}")
+        knn_mae = mean_absolute_error(y_test, y_pred)
+        logging.info(f"KNN Mean Absolute Error [MAE]: {knn_mae}")
+        knn_r2 = r2_score(y_test, y_pred)
+        logging.info(f"KNN R^2 Score: {knn_r2}")
         
         y_min = min(y_test.min(), y_pred.min())
         y_max = max(y_test.max(), y_pred.max())

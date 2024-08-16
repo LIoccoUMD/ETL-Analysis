@@ -5,7 +5,15 @@ import logging
 logging.basicConfig(filename='vis/visualizations.log', level=logging.INFO, 
                     format='%(asctime)s - %(levelname)s - %(message)s')
 
-# Function to randomly select exercises based on safety rating ranges
+"""
+Selects random exercises based on safety rating ranges and user-selected body part.
+
+Parameters:
+    df (pd.DataFrame): The DataFrame containing the exercise data.
+
+Returns:
+    dict: A dictionary with difficulty levels as keys and lists of exercises as values.
+"""
 def select_random_exercises(df):
     try:
         body_parts = df["BodyPart"].unique().tolist()
@@ -36,6 +44,15 @@ def select_random_exercises(df):
     
     return exercises
 
+"""
+Creates a visualization of the exercises for each difficulty level.
+
+Parameters:
+    exercises (dict): A dictionary containing lists of exercises for each difficulty level.
+
+Returns:
+    None
+"""
 def create_visualization(exercises):
     fig, ax = plt.subplots(figsize=(10, 6))
     ax.set_facecolor("black")

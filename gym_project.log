@@ -1,11 +1,11 @@
-2024-08-16 18:17:28,451 - INFO - Running Extract step
-2024-08-16 18:17:29,781 - INFO - Extract step completed successfully
-2024-08-16 18:17:29,781 - INFO - Running Transform step
-2024-08-16 18:17:30,904 - INFO - Transform step completed successfully
-2024-08-16 18:17:30,904 - INFO - Running Prescriptive Analysis step
-2024-08-16 18:17:31,788 - INFO - Prescriptive Analysis step completed successfully
-2024-08-16 18:17:31,788 - INFO - Running KNN Model step
-2024-08-16 18:17:36,348 - INFO - KNN Model step completed successfully
-2024-08-16 18:17:36,348 - INFO - Running Visualization step
-2024-08-16 18:17:56,027 - INFO - Visualization step completed successfully
-2024-08-16 18:17:56,027 - INFO - Finished running all steps.
+2024-08-16 18:32:34,473 - INFO - Running Extract step
+2024-08-16 18:32:35,764 - INFO - Extract step completed successfully
+2024-08-16 18:32:35,764 - INFO - Running Transform step
+2024-08-16 18:32:36,846 - INFO - Transform step completed successfully
+2024-08-16 18:32:36,846 - INFO - Running Prescriptive Analysis step
+2024-08-16 18:32:37,752 - INFO - Prescriptive Analysis step completed successfully
+2024-08-16 18:32:37,752 - INFO - Running KNN Model step
+2024-08-16 18:32:42,622 - INFO - KNN Model step completed successfully
+2024-08-16 18:32:42,622 - INFO - Running Visualization step
+2024-08-16 18:32:53,659 - INFO - Visualization step completed successfully
+2024-08-16 18:32:53,659 - INFO - Finished running all steps.
