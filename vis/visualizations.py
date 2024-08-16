@@ -7,13 +7,20 @@ logging.basicConfig(filename='vis/visualizations.log', level=logging.INFO,
 
 # Function to randomly select exercises based on safety rating ranges
 def select_random_exercises(df):
-    df_filter = df[~df["Title"].str.contains(r"\(.*\)")]
-    
     try:
-    
-        beginner_exercises = df_filter[(df["Safety"] >= 0) & (df["Safety"] <= 5)].sample(3)
-        intermediate_exercises = df_filter[(df["Safety"] > 5) & (df["Safety"] <= 7.5)].sample(3)
-        advanced_exercises = df_filter[(df["Safety"] > 7.5) & (df["Safety"] <= 10)].sample(3)
+        body_parts = df["BodyPart"].unique().tolist()
+        body_part_options = ", ".join(body_parts)
+        num_exercises = int(input("Enter the number of exercises you would like to see for each level: "))
+        body_part = input(f"Enter the body part you're interested in. Possible values are {body_part_options} : ").strip()
+        
+        df_filter = df[df["BodyPart"].str.contains(body_part, case=False, na=False)]
+        
+        if df_filter.empty:
+            raise ValueError(f"No exercises found for the body part '{body_part}'.")
+        
+        beginner_exercises = df_filter[(df_filter["Safety"] >= 0) & (df_filter["Safety"] <= 5)].sample(num_exercises)
+        intermediate_exercises = df_filter[(df_filter["Safety"] > 5) & (df_filter["Safety"] <= 7.5)].sample(num_exercises)
+        advanced_exercises = df_filter[(df_filter["Safety"] > 7.5) & (df_filter["Safety"] <= 10)].sample(num_exercises)
         
         exercises = {
             "Beginner": beginner_exercises["Title"].tolist(),
@@ -24,7 +31,7 @@ def select_random_exercises(df):
         logging.info("Successfully selected exercises for each difficulty.")
         
     except ValueError as e:
-        logging.error(f"Error selecting esercises: {e}")
+        logging.error(f"Error selecting exercises: {e}")
         raise
     
     return exercises

@@ -2,3 +2,17 @@
 2024-08-16 17:09:39,472 - INFO - Successfully selected exercises for each difficulty.
 2024-08-16 17:53:00,530 - INFO - Successfully selected exercises for each difficulty.
 2024-08-16 17:54:17,659 - INFO - Successfully selected exercises for each difficulty.
+2024-08-16 17:58:02,564 - INFO - Successfully selected exercises for each difficulty.
+2024-08-16 18:00:03,137 - INFO - Successfully selected exercises for each difficulty.
+2024-08-16 18:00:25,939 - INFO - Successfully selected exercises for each difficulty.
+2024-08-16 18:00:50,246 - INFO - Successfully selected exercises for each difficulty.
+2024-08-16 18:04:25,378 - INFO - Successfully selected exercises for each difficulty.
+2024-08-16 18:05:39,741 - ERROR - Error selecting exercises: invalid literal for int() with base 10: '& "c:/Users/Luciano Iocco/Documents/GitHub/inst414-final-project-luciano-iocco/.venv/Scripts/python.exe" "c:/Users/Luciano Iocco/Documents/GitHub/inst414-final-project-luciano-iocco/vis/visualization
+2024-08-16 18:05:57,115 - ERROR - Error selecting exercises: invalid literal for int() with base 10: '& "c:/Users/Luciano Iocco/Documents/GitHub/inst414-final-project-luciano-iocco/.venv/Scripts/python.exe" "c:/Users/Luciano Iocco/Documents/GitHub/inst414-final-project-luciano-iocco/vis/visualization
+2024-08-16 18:06:13,994 - INFO - Successfully selected exercises for each difficulty.
+2024-08-16 18:09:20,526 - ERROR - Error selecting exercises: invalid literal for int() with base 10: '& "c:/Users/Luciano Iocco/Documents/GitHub/inst414-final-project-luciano-iocco/.venv/Scripts/python.exe" "c:/Users/Luciano Iocco/Documents/GitHub/inst414-final-project-luciano-iocco/vis/visualization
+2024-08-16 18:09:33,839 - INFO - Successfully selected exercises for each difficulty.
+2024-08-16 18:10:15,320 - INFO - Successfully selected exercises for each difficulty.
+2024-08-16 18:11:05,457 - INFO - Successfully selected exercises for each difficulty.
+2024-08-16 18:12:08,425 - INFO - Successfully selected exercises for each difficulty.
+2024-08-16 18:15:04,593 - INFO - Successfully selected exercises for each difficulty.

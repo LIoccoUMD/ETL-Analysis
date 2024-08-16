@@ -12,3 +12,38 @@
 2024-08-16 17:54:14,130 - INFO - KNN regression completed. MSE: 0.16294470736728922
 2024-08-16 17:54:15,955 - INFO - Visualization generated successfully.
 2024-08-16 17:54:16,002 - INFO - Script completed.
+2024-08-16 17:57:58,275 - INFO - Loading processed data for KNN regression.
+2024-08-16 17:57:58,292 - INFO - Running KNN regression and visualization script.
+2024-08-16 17:57:58,292 - INFO - Starting KNN regression.
+2024-08-16 17:57:58,824 - INFO - Optimal k found: 4
+2024-08-16 17:57:58,832 - INFO - KNN regression completed. MSE: 0.16294470736728922
+2024-08-16 17:58:00,782 - INFO - Visualization generated successfully.
+2024-08-16 17:58:00,838 - INFO - Script completed.
+2024-08-16 17:59:49,061 - INFO - Loading processed data for KNN regression.
+2024-08-16 17:59:49,078 - INFO - Running KNN regression and visualization script.
+2024-08-16 17:59:49,078 - INFO - Starting KNN regression.
+2024-08-16 17:59:49,600 - INFO - Optimal k found: 4
+2024-08-16 17:59:49,608 - INFO - KNN regression completed. MSE: 0.16294470736728922
+2024-08-16 17:59:51,389 - INFO - Visualization generated successfully.
+2024-08-16 17:59:51,429 - INFO - Script completed.
+2024-08-16 18:00:22,045 - INFO - Loading processed data for KNN regression.
+2024-08-16 18:00:22,060 - INFO - Running KNN regression and visualization script.
+2024-08-16 18:00:22,060 - INFO - Starting KNN regression.
+2024-08-16 18:00:22,581 - INFO - Optimal k found: 4
+2024-08-16 18:00:22,589 - INFO - KNN regression completed. MSE: 0.16294470736728922
+2024-08-16 18:00:24,378 - INFO - Visualization generated successfully.
+2024-08-16 18:00:24,411 - INFO - Script completed.
+2024-08-16 18:00:46,162 - INFO - Loading processed data for KNN regression.
+2024-08-16 18:00:46,177 - INFO - Running KNN regression and visualization script.
+2024-08-16 18:00:46,177 - INFO - Starting KNN regression.
+2024-08-16 18:00:46,724 - INFO - Optimal k found: 4
+2024-08-16 18:00:46,734 - INFO - KNN regression completed. MSE: 0.16294470736728922
+2024-08-16 18:00:48,626 - INFO - Visualization generated successfully.
+2024-08-16 18:00:48,660 - INFO - Script completed.
+2024-08-16 18:04:18,828 - INFO - Loading processed data for KNN regression.
+2024-08-16 18:04:18,844 - INFO - Running KNN regression and visualization script.
+2024-08-16 18:04:18,844 - INFO - Starting KNN regression.
+2024-08-16 18:04:19,358 - INFO - Optimal k found: 4
+2024-08-16 18:04:19,366 - INFO - KNN regression completed. MSE: 0.16294470736728922
+2024-08-16 18:04:21,114 - INFO - Visualization generated successfully.
+2024-08-16 18:04:21,151 - INFO - Script completed.

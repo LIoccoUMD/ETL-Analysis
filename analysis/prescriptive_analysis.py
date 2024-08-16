@@ -10,9 +10,6 @@ data_path = "data/processed/processed_data.csv"
 logging.info(f"Loading processed data from {data_path}.")
 df = pd.read_csv(data_path)
 
-# Perform prescriptive analytics
-
-
 # Save prescriptive analysis as CSV
 output_file = "data/outputs/prescriptive_analysis.csv"
 df.to_csv(output_file)
