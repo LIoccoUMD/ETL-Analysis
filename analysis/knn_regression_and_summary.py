@@ -51,7 +51,7 @@ def knearest(df):
     y_max = max(y_test.max(), y_pred.max())
     
     
-    # Graph using plotly
+    # Plotly graph
     fig = px.scatter(x=y_test, y=y_pred, labels={"x": "Actual Safety", "y": "Predicted Safety"}, title="Actual vs Predicted Safety", 
                      color=y_test, trendline="ols", trendline_color_override="darkviolet",
                      color_continuous_scale=px.colors.sequential.algae)
