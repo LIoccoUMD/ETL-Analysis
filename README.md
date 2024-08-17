@@ -2,14 +2,15 @@
 
 ## Project Overview
 
-This project involves extracting, transforming, and analyzing a dataset of gym exercises. The analysis includes calculating safety scores for exercises, evaluating models, and generating visualizations. The process is automated through a series of Python scripts.
+This project involves extracting, transforming, and analyzing a dataset of gym exercises. The analysis includes calculating safety scores for exercises, evaluating models, and generating visualizations. The process is automated through a series of Python scripts, with enhanced interactivity
+and logging for better usability and debugging.
 
 ### Business Problem
-Unsafe lifting practices in gyms pose risks to member safety, which can be mitigated by providing easily accessible, data-driven visualizations of proper exercise techniques categorized by difficulty and muscle group.
+Unsafe lifting practices in gyms pose risks to member safety, which can be mitigated by providing easily accessible, data-driven visualizations of proper exercise techniques categorized by difficulty and muscle group. The project aims to develop a recommendation system that
+enhances client satisfaction and reduces injury rates, directly contributing to higher retention and client loyalty.
 
 ### Data Sets Used
 - `megaGymDataset.csv`: Contains data on various exercises, including type, body part, equipment, difficulty level, rating, and description.
-- `missing_ratings.csv`: Information on entried with missing data in the ratings column.
 - `dataset-metadata.json`: Metadata for the datasets.
 
 ### Techniques Employed
@@ -17,14 +18,48 @@ Unsafe lifting practices in gyms pose risks to member safety, which can be mitig
 - **Encoding Categorical Variables**  
 - **K-Nearest Neighbor to predict safety scores**  
     - GridSearchCV to find the optimal number of neighbors
+    - MSE, MAE, R^2 metrics
 
 ### Expected Outputs
-- Descriptive and prescriptive analysis/visualizations in clear, readable files
+- Analysis/evaluation/visualizations in clear, readable files
 - Summary statistics of the exercise dataset.
 - Visualization of exercises grouped into clusters
 - Recommendations of exercises based on their difficulty.
+- Logging to all files
+- Non-technical visualiztion for the user
+- Technical visulation to represent model performance
 
 # Setup Instructions
+
+## Setting Up Kaggle API Keys
+
+To run this project, you may need access to datasets hosted on Kaggle. Follow the steps below to set up your Kaggle API keys:
+
+1. **Obtain Your Kaggle API Key:**
+    - Log in to your Kaggle account.
+    - Go to your account settings by clicking on your profile picture in the top right corner and selecting "Account."
+    - Scroll down to the "API" section and click "Create New API Token."
+    - A file named `kaggle.json` will be downloaded, containing your Kaggle API credentials.
+
+2. **Place the API Key:**
+    - Move the `kaggle.json` file to a secure location:
+        - **Windows:** `C:\Users\<YourUsername>\.kaggle\kaggle.json`
+    - Ensure that the `.kaggle` directory is hidden and that the `kaggle.json` file is accessible only by you.
+
+3. **Using the API Key in This Project:**
+    - The Kaggle API is required to download datasets automatically when you run the scripts.
+    - Ensure you have the Kaggle Python package installed:
+      ```sh
+      python -m pip install kaggle
+      ```
+    - Authenticate your Kaggle API in your scripts:
+      ```python
+      import kaggle
+      kaggle.api.authenticate()
+      ```
+    - The datasets will be automatically downloaded using the API when you run the project.
+
+
 
 ## Cloning the Repository
 Clone the repository to your local machine using the following command:  
@@ -54,4 +89,6 @@ their time, level, and a message.
     ∙ *transform.py*: Processes the raw data, handles missing values and calculates safety scores for exercises.  
 **vis/**  
     ∙ *visualizations.py*: Generates visualizations to help understand the data and results.  
+**log/**
+    ∙ logging information gets automatically output to this folder
 
