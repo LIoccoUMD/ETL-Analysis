@@ -91,4 +91,5 @@ their time, level, and a message.
     ∙ *visualizations.py*: Generates visualizations to help understand the data and results.  
 **log/**
     ∙ logging information gets automatically output to this folder
+    ∙ main.py outputs to gym-project.log
 
