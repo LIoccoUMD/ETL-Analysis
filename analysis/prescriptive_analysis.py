@@ -1,5 +1,6 @@
 import pandas as pd
 import logging
+import os
 
 logging.basicConfig(filename="log/prescriptive_analysis.log", level=logging.INFO, 
                     format='%(asctime)s - %(levelname)s - %(message)s')
@@ -12,5 +13,6 @@ df = pd.read_csv(data_path)
 
 # Save prescriptive analysis as CSV
 output_file = "data/outputs/prescriptive_analysis.csv"
+os.makedirs(os.path.dirname(output_file), exist_ok=True)
 df.to_csv(output_file)
 print("Prescriptive analysis saved.")

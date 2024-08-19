@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 import logging
+import os
 
 
 logging.basicConfig(filename='log/transform.log', level=logging.INFO, 
@@ -140,6 +141,7 @@ def transform_data(input_file, output_file, equipment_updates_file):
     df = load_data(input_file)
     equipment_updates = pd.read_csv(equipment_updates_file)
     df = calculate_safety(df, equipment_updates)
+    os.makedirs(os.path.dirname(output_file), exist_ok=True)
     df.to_csv(output_file, index=False)
     print(f"Transformed data saved to {output_file}")
 
