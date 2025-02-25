@@ -74,22 +74,26 @@ their time, level, and a message.
 
 # Code Package Structure
 
-∙ gym_project.log: Contains logging information recorded during runtime.  
-**data/**  
-    ∙ *downloaded/* : Contains raw downloaded datasets.  
-    ∙ *processed/* : Contains processed data files.  
-**outputs/**  
-    ∙ *descriptive_analysis.csv*: Output file for descriptive_analysis script.  
-    ∙ *prescriptive_analysis.csv*: Output file for prescriptive_analysis script.  
-**analysis/**  
-    ∙ *descriptive_analysis.py*: Performs descriptive statistical analysis.    
-    ∙ *prescriptive_analysis.py*: Evaluates models and provides recommendations. (WIP -- currently all done in descriptive_analysis.py)  
-**etl/**  
-    ∙ *extract.py*: Loads the raw dataset in a DataFrame  
-    ∙ *transform.py*: Processes the raw data, handles missing values and calculates safety scores for exercises.  
-**vis/**  
-    ∙ *visualizations.py*: Generates visualizations to help understand the data and results.  
-**log/**
-    ∙ logging information gets automatically output to this folder
-    ∙ main.py outputs to gym-project.log
+### **data/**
+- **`downloaded/`**: Stores raw datasets fetched from sources.
+- **`processed/`**: Holds processed data files after transformation.
+
+### **outputs/**
+- **`descriptive_analysis.csv`**: Results from the descriptive analysis script.
+- **`prescriptive_analysis.csv`**: Results from the prescriptive analysis script.
+
+### **analysis/**
+- **`descriptive_analysis.py`**: Conducts descriptive statistical analysis.
+- **`prescriptive_analysis.py`**: Evaluates models and generates recommendations
+
+### **etl/**
+- **`extract.py`**: Loads raw dataset into a DataFrame.
+- **`transform.py`**: Processes data, manages missing values, and computes exercise safety scores.
+
+### **vis/**
+- **`visualizations.py`**: Creates visualizations for data insights and results.
+
+### **log/**
+- Automatically stores logging output.
+- **`main.py`** outputs logs to `gym_project.log`.
 
